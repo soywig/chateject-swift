@@ -13,4 +13,4 @@ Done in a few hours. Didn't clean the code. Probably didn't test enough. I'll up
 * `Chateject`: Everything hangs from here. You have to provide your own Twitch API key.
 * `Chateject.downloadChatComments(streamId)`: Retrieves a full log of the stream chat.
 * `Chateject.downloadStreamMetadata`: Retrieves basic metadata about the stream.
-* `Chateject.downloadFullLog`: `Retrieves both.`
+* `Chateject.downloadFullLog`: Retrieves both.
