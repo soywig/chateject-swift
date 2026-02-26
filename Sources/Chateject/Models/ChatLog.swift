@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ChatLog {
+public struct ChatLog: Codable {
     public var meta: StreamMetadata?
     public var comments: [Comment]?
 }
