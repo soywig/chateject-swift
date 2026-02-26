@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Comment: Codable {
+public struct Comment: Codable, Hashable {
     public var author: String?
     public var message: String?
     public var timestamp: Int
