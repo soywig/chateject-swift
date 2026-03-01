@@ -2,8 +2,8 @@ import Testing
 @testable import Chateject
 
 // please set these before testing
-fileprivate let clientId = ""
-fileprivate let clientSecret = ""
+fileprivate let clientId = "14vgqefhjf0yxhfjp7avzn3gj7ajlh"
+fileprivate let clientSecret = "ihgntvt3xib0sq43ydz027ilwusi1d"
 fileprivate let streamId = "2703800897"
 
 @Test func oAuth() async throws {

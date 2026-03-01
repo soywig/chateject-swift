@@ -14,7 +14,7 @@ public struct StreamMetadata: Codable {
     public var date: String?
     public var length: Int?
     
-    enum CodingKeys: String, CodingKey {
+    enum TwitchCodingKeys: String, CodingKey {
         case id
         case title
         case streamer = "user_name"
@@ -22,13 +22,21 @@ public struct StreamMetadata: Codable {
         case length = "duration"
     }
     
+    enum OwnCodingKeys: String, CodingKey {
+        case id, title, streamer, date, length
+    }
+    
     public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        id = try container.decodeIfPresent(String.self, forKey: .id)
-        title = try container.decodeIfPresent(String.self, forKey: .title)
-        streamer = try container.decodeIfPresent(String.self, forKey: .streamer)
-        date = try container.decodeIfPresent(String.self, forKey: .date)
-        if let durationString = try container.decodeIfPresent(String.self, forKey: .length) {
+        let twitchContainer = try decoder.container(keyedBy: TwitchCodingKeys.self)
+        let ownContainer = try decoder.container(keyedBy: OwnCodingKeys.self)
+        id = try twitchContainer.decodeIfPresent(String.self, forKey: .id)
+        title = try twitchContainer.decodeIfPresent(String.self, forKey: .title)
+        streamer = (try? twitchContainer.decodeIfPresent(String.self, forKey: .streamer)) ?? (try? ownContainer.decodeIfPresent(String.self, forKey: .streamer))
+        date = (try? twitchContainer.decodeIfPresent(String.self, forKey: .date)) ?? (try? ownContainer.decodeIfPresent(String.self, forKey: .date))
+        if let durationString =
+            (try? twitchContainer.decodeIfPresent(String.self, forKey: .length))
+            ?? (try? ownContainer.decodeIfPresent(String.self, forKey: .length))
+        {
             length = StreamMetadata.parseDuration(durationString)
         } else {
             length = nil
