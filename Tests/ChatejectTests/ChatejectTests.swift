@@ -2,9 +2,9 @@ import Testing
 @testable import Chateject
 
 // please set these before testing
-fileprivate let clientId = "14vgqefhjf0yxhfjp7avzn3gj7ajlh"
-fileprivate let clientSecret = "ihgntvt3xib0sq43ydz027ilwusi1d"
-fileprivate let streamId = "2703800897"
+fileprivate let clientId = ""
+fileprivate let clientSecret = ""
+fileprivate let streamId = ""
 
 @Test func oAuth() async throws {
     _ = try await getOAuthToken(auth: TwitchAuth(
