@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Chateject {
+public extension Chateject {
     func downloadFullLog(streamId: String) async throws -> ChatLog {
         return ChatLog(
             meta: try await downloadStreamMetadata(streamId: streamId),

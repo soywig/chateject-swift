@@ -7,14 +7,14 @@
 
 import Foundation
 
-class Chateject {
+public class Chateject {
     var auth: TwitchAuth
     
-    init(auth: TwitchAuth) {
+    public init(auth: TwitchAuth) {
         self.auth = auth
     }
     
-    init (clientId: String, clientSecret: String) {
+    public init(clientId: String, clientSecret: String) {
         self.auth = TwitchAuth(clientId: clientId, clientSecret: clientSecret)
     }
 }

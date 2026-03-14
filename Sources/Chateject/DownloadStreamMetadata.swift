@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Chateject {
+public extension Chateject {
     func downloadStreamMetadata(streamId: String) async throws -> StreamMetadata? {
         let oAuthToken = try await getOAuthToken(auth: self.auth)
         

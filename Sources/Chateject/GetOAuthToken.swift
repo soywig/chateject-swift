@@ -7,7 +7,7 @@
 
 import Foundation
 
-func getOAuthToken(auth: TwitchAuth) async throws -> String {
+public func getOAuthToken(auth: TwitchAuth) async throws -> String {
     let endpoint = URL(string: "https://id.twitch.tv/oauth2/token")!
     
     var request = URLRequest(url: endpoint)
