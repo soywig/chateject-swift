@@ -10,7 +10,8 @@ import Foundation
 public extension Chateject {
     func downloadChatComments(
     streamId: String,
-    startOffset: Int = 0
+    startOffset: Int = 0,
+    onProgress: (_ comments: Int, _ timestamp: Int) -> Void = { _, _ in }
 ) async throws -> [Comment] {
     let endpoint = URL(string: "https://gql.twitch.tv/gql")!
     let clientId = "kd1unb4b3q4t58fwlpcbzcbnm76a8fp"
@@ -95,6 +96,9 @@ public extension Chateject {
 
             cursor = edges.last?.cursor
             isFirst = false
+            
+            // report progress
+            onProgress(comments.count, comments.last?.timestamp ?? .zero)
         } catch {
             print("Request failed:", error)
             break
@@ -106,7 +110,5 @@ public extension Chateject {
     return comments
 }
 }
-
-
 
 
